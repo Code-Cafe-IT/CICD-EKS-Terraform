@@ -54,9 +54,29 @@ pipeline {
                 }
             }
         }
-        stage('Hello') {
+        stage('Docker Build & Tag') {
             steps {
-                sh "mvn package"
+                script{
+                withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                    sh "docker build -t minhduccloud/cicd-devops-shack:latest ."
+                }
+
+                }
+            }
+        }
+        stage('Trivy Image Scan') {
+            steps {
+                sh "trivy image --format table -o image.html minhduccloud/cicd-devops-shack:latest "
+            }
+        }
+        stage('Docker Push') {
+            steps {
+                script{
+                withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                    sh "docker push minhduccloud/cicd-devops-shack:latest"
+                }
+
+                }
             }
         }
     }
