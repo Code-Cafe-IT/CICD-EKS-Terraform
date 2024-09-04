@@ -6,7 +6,7 @@ pipeline {
         jdk 'jdk17'
     }
 
-    enviroments {
+    environment {
         SCANNER_HOME = tool 'sonar-scanner'
     }
 
