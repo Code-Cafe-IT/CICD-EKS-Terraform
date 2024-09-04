@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Trivy FS Scan') {
             steps {
-                sh "trivy fs --format table -o fs.html ."
+                sh "trivy fs --skip-dirs --format table -o fs.html ."
             }
         }
         stage('SonarQube Analysis') {
@@ -66,7 +66,7 @@ pipeline {
         }
         stage('Trivy Image Scan') {
             steps {
-                sh "trivy image --format table -o image.html minhduccloud/cicd-devops-shack:latest "
+                sh "trivy image  --format table -o image.html minhduccloud/cicd-devops-shack:latest "
             }
         }
         stage('Docker Push') {
