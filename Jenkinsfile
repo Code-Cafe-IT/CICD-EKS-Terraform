@@ -1,28 +1,24 @@
-pipeline { 
+pipeline {
     agent any
-    
-    tools {
-        maven 'maven3'
-        jdk 'jdk17'
-    }
 
     stages {
-        
-        stage('Compile') {
+        stage('Hello') {
             steps {
-            sh  "mvn compile"
+                echo 'Hello World'
             }
         }
-        
-        stage('Test') {
+    }
+        stages {
+        stage('Hello') {
             steps {
-                sh "mvn test"
+                echo 'Hello World'
             }
         }
-        
-        stage('Package') {
+    }
+        stages {
+        stage('Hello') {
             steps {
-                sh "mvn package"
+                echo 'Hello World'
             }
         }
     }
