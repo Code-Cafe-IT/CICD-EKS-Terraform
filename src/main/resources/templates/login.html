@@ -237,7 +237,7 @@
             </div>
         </div>
 
-        <h2>Login</h2>
+        <h2>Đăng Nhập</h2>
         <form th:action="@{/login}" method="post" role="form" th:object="${user}">
 
             <label for="username">Username:</label>
@@ -248,7 +248,7 @@
             <input th:field="*{password}" type="password" id="password" name="password"
                 placeholder="Enter your Password" required>
 
-            <button type="submit">Login</button>
+            <button type="submit">Đăng nhập</button>
         </form>
         <p class="form-footer">Don't have an account? <a th:href="@{/register}">Register</a> here.</p>
     </div>
